@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Poppins:wght@500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+
+body{
+    background-image: url("/img/bgBlog.png");
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    margin: 20px 0;
+}
+
+.header__logo {
+    text-decoration: none;
+    color: black;
+    font-size: 1.6rem;
+}
+
+.header__nav > ul {
+    padding: 0;
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    height: 100%;
+    width: 100%;
+}
+
+.header__nav > ul > li {
+    display: flex;
+    align-items: center;
+}
+
+.header__nav > ul a {
+    text-decoration: none;
+    color: black;
+}
+
+.header__nav > ul a:hover {
+    opacity: 0.4;
+}
+
+.active {
+    opacity: 0.4;
+}
+
+.header_button {
+    border: none;
+    background: none;
+}
+
+.author{
+    text-align: center;
+}
+
+.author__heading{
+    font-weight: bolder;   
+}
+
+.img-index{
+    text-align: center;
+    margin: 10px 0 40px 0;
+}
+
+footer{
+    margin: 60px 0 40px 0;
+    text-align: center;
+}
+
+.post__heading{
+    font-size: 1.6rem;
+}
+
+.post__item{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #cbc4c4;
+}
+
+.view-older{
+    text-decoration: none;
+    margin-top: 30px;
+    display: block;
+    color: #8a8686;
+}
