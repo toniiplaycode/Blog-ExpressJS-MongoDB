@@ -1,12 +1,20 @@
 import express from "express";
 import dotenv from "dotenv";
 import expressLayout from "express-ejs-layouts";
-import initRoutes from "./routes/api.js";
+import initRoutes from "./server/routes/api.js";
+import connectDB from "./server/config/db.js";
+
+dotenv.config();
 
 const app = express();
 
-dotenv.config();
 const PORT = process.env.PORT;
+
+connectDB();
+
+// dùng urlencoded và json để có thể post được data lên server
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));

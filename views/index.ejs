@@ -9,10 +9,17 @@
 
 <section class="post">
     <p class="post__heading">Lastest Posts</p>
-    <div class="post__item">
-        <p class="post__title">Post title</p>
-        <p class="post_date">Date</p>
-    </div>
+
+    <% data.forEach(post => { %>
+        <a href="/post/<%= post.id %>" class="post__item">
+            <p class="post__title"><%= post.title %></p>
+            <p class="post__date"><%= post.createAt.toDateString() %></p>
+        </a>
+    <% }) %>
+ 
     
-    <a href="" class="view-older">&lt; View Older Posts</a>
+    <% if (nextPage !== null) { %>
+        <a href="/?page=<%= nextPage %>" class="pagination">&lt; View Older Posts</a>
+    <% } %>
+
 </section>

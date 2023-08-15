@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="/css/app.css">
     <title><%= locals.title %></title>
 </head>
+
 <body>
+    <%- include("../partials/search.ejs") %>
     <div class="container-sm">
         <%- include('../partials/header.ejs') %>
         <main class="main">
@@ -18,4 +20,7 @@
         <%- include('../partials/footer.ejs') %>
     </div>
 </body>
+
+<script src="/js/active.js"></script>
+<script src="/js/modalSearch.js"></script>
 </html>

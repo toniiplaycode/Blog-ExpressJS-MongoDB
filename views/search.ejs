@@ -1,0 +1,13 @@
+<h1 style="text-align: center;">Result</h1>
+<% if (data.length > 0) { %>
+    <% data.forEach(post => { %>
+        <a href="/post/<%= post.id %>" class="post__item">
+            <p class="post__title"><%= post.title %></p>
+            <p class="post__date"><%= post.createAt.toDateString() %></p>
+        </a>
+    <% }) %>
+<% } else { %>
+    <h3>Not result</h3>
+<% } %> 
+
+ 
