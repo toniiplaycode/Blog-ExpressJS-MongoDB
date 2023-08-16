@@ -58,6 +58,11 @@ header{
     border-radius: 6px;
 }
 
+.header_admin_button > a {
+    text-decoration: none;
+    color: #333;
+}
+
 .author{
     text-align: center;
 }
@@ -151,10 +156,40 @@ footer{
     padding: 6px;
 }
 
+.form-admin > textarea{
+    width: 100%;
+    padding: 6px;
+    display: block;
+}
+
 .form-admin > button{
     margin-top: 20px;
     padding: 6px 16px;
     color: white;
     background: black;
     border: none;
+}
+
+
+.board-title, .post-admin-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.board-title > a, .post-admin-container > a { 
+    color: #333;
+}
+
+.post-admin-container{
+    margin-bottom: 12px;
+}
+
+.post-admin-control > a { 
+    padding: 4px;
+    background: black;
+    color: white;
+    text-decoration: none;
+} 
+.post-admin-control > a:hover {
+    opacity: 0.8;
 }

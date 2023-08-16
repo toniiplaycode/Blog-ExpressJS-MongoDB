@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import Admin from "../models/Admin.js";
+import Post from "../models/Post.js";
 
 dotenv.config();
 const router = express.Router();
@@ -35,8 +36,12 @@ const authMiddleware = (req, res, next) => {
 
 const initAdminRoutes = (app) => {
     router.get("/", (req, res) => {
-        try {
-            return res.render("admin/index", {layout: adminLayout});
+        try {   
+            const locals = {
+                title: "Home Admin",
+            }
+
+            return res.render("admin/index", {layout: adminLayout, locals});
         } catch (error) {
             console.log("error: ", error);
         }
@@ -75,7 +80,13 @@ const initAdminRoutes = (app) => {
     })
 
     router.get("/dashBoard", authMiddleware, async (req, res) => {
-        res.render("admin/dashBoard", {layout: adminLayout})
+        const locals = {
+            title: "Dashboard Admin",
+        }
+        
+        const data = await Post.find();
+
+        res.render("admin/dashBoard", {layout: adminLayout, locals, data})
     })
 
     router.post("/register", async (req, res) => {
@@ -109,8 +120,66 @@ const initAdminRoutes = (app) => {
         }
     })
 
+    router.get("/add-post", authMiddleware, async (req, res) => {   
+        const locals = {
+            title: "Add Post",
+        }
+
+        res.render("admin/addPost", {layout: adminLayout, locals});
+    })
+
+    router.post("/add-post", authMiddleware, async (req, res) => {   
+        try {
+            await Post.create({
+                title: req.body.title,
+                body: req.body.body,
+            });
+            res.redirect("/admin/dashBoard");
+        } catch (error) {
+            console.log("error: ",error);
+        }
+    })
+
+    router.get("/delete-post/:id", authMiddleware, async (req, res) => {   
+        try {
+            await Post.deleteOne({_id: req.params.id});
+            res.redirect("/admin/dashBoard");
+        } catch (error) {
+            console.log("error: ",error);
+        }
+    })
+    
+    router.get("/edit-post/:id", authMiddleware, async (req, res) => {   
+        try {
+            const locals = {
+                title: "Edit Post",
+            }
+            const data = await Post.findOne({_id: req.params.id})
+
+            res.render("admin/editPost", {layout: adminLayout, data, locals});
+        } catch (error) {
+            console.log("error: ",error);
+        }
+    })
+
+    router.post("/edit-post", authMiddleware, async (req, res) => {   
+        try {
+            await Post.findByIdAndUpdate(req.body.id, {
+                title: req.body.title,
+                body: req.body.body,
+            })
+            res.redirect("/admin/dashBoard");
+        } catch (error) {
+            console.log("error: ",error);
+        }
+    })
+
+    router.get("/logout", async (req, res) => {
+        res.clearCookie("token"); // xoá cookie tên "token"
+        res.redirect("/admin");
+    })
 
     return app.use("/admin", router);
 }
 
-export default initAdminRoutes;
+export default initAdminRoutes; 

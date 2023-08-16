@@ -7,8 +7,7 @@ const initRoutes = (app) => {
     router.get("/", async (req, res) => {
         try {
             const locals = {
-                title: "MongoDB Blog",
-                footer: "Simple blog with ExpressJS & MongoDB"
+                title: "Home",
             }
 
             //phân trang
@@ -67,9 +66,18 @@ const initRoutes = (app) => {
         }
     })
     
-
     router.get("/about", (req, res) => {
-        res.render("about");
+        const locals = {
+            title: "About",
+        }
+        res.render("about", {locals});
+    })
+
+    router.get("/contact", (req, res) => {
+        const locals = {
+            title: "Contact",
+        }
+        res.render("contact", {locals});
     })
 
     return app.use("/", router);

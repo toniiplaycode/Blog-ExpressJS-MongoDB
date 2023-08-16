@@ -1,0 +1,11 @@
+<h3 class="form-admin-title">Edit Post</h3>
+<form class="form-admin" action="/admin/edit-post" method="post">
+    <input type="hidden" name="id" value="<%= data._id %>">
+    <p>Title</p>
+    <input type="text" name="title" value="<%= data.title %>">
+    <p>Body</p>
+    <textarea name="body" cols="30" rows="10">
+        <%= data.body %>
+    </textarea>
+    <button type="submit" class="btn-login">Edit</button>
+</form>

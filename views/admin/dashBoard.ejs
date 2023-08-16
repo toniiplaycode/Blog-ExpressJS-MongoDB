@@ -1,1 +1,17 @@
-<h1>DashBoard</h1>
+<div class="board-title">
+    <h1>Posts</h1>
+    <a href="/admin/add-post" class="btn-add-post">+ Add New</a>
+</div>
+
+<% data.forEach(post => { %>
+    <div class="post-admin-container">
+        <a href="/post/<%=post._id %>">
+            <%=post.title %>
+        </a>
+        <div class="post-admin-control">
+            <a href="/admin/edit-post/<%=post._id %>">Edit</a>
+            <a href="/admin/delete-post/<%=post._id %>">Delete</a>
+        </div>
+    </div>
+<% }) %>
+
