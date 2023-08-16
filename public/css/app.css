@@ -51,7 +51,7 @@ header{
     opacity: 0.4;
 }
 
-.header_button {
+.header_button, .header_admin_button {
     border: 1px solid #8e8989;
     background: none;
     padding: 0 4px;
@@ -136,4 +136,25 @@ footer{
 
 .postDetail__body{
     margin-top: 10px;   
+}
+
+.form-admin{
+    margin-bottom: 40px;
+}
+
+.form-admin > p{
+    margin-top: 10px;
+}
+
+.form-admin > input{
+    width: 100%;
+    padding: 6px;
+}
+
+.form-admin > button{
+    margin-top: 20px;
+    padding: 6px 16px;
+    color: white;
+    background: black;
+    border: none;
 }
