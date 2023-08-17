@@ -1,8 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import expressLayout from "express-ejs-layouts";
-import initRoutes from "./server/routes/api.js";
 import connectDB from "./server/config/db.js";
+import initRoutes from "./server/routes/api.js";
 import initAdminRoutes from "./server/routes/adminApi.js";
 import cookieParser from "cookie-parser"; // (https://chat.openai.com/c/dc2f8fc4-e238-4070-88a4-c11d4f53825f)
 import MongoStore from "connect-mongo"; // (https://chat.openai.com/c/20f2af89-fe90-409b-ac4d-f4b07f2094be)

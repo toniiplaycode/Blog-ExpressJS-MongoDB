@@ -104,10 +104,10 @@ const initAdminRoutes = (app) => {
                     admin
                 })
             } catch (error) {
-                // erro.code = 1100 là bị trùng dữ liệu, username mình để là unique và server sẽ phản hồi lại status 409 là conflict
+                // erro.code = 1100 là bị trùng dữ liệu, username mình để bên models là unique và server sẽ phản hồi lại status 409 là conflict
                 if(error.code === 11000) {
                     res.status(409).json({
-                        message: "User already is use !"
+                        message: "User already used, let use username other !"
                     })
                 }
                 res.status(500).json({
@@ -175,7 +175,7 @@ const initAdminRoutes = (app) => {
     })
 
     router.get("/logout", async (req, res) => {
-        res.clearCookie("token"); // xoá cookie tên "token"
+        res.clearCookie("token"); // xoá cookies tên "token"
         res.redirect("/admin");
     })
 
